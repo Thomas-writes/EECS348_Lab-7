@@ -17,45 +17,56 @@ int main(int argc, char *argv[]) {
     //ask the user for the scale to convert to
     printf("Convert to (1) Celsius, (2) Fahrenheit, (3) Kelvin: ");
     scanf("%d", &conv);
-    
+    //checks if the temperature is celsius
     if (scale == 1){
+        //error handling to make sure temperature is valid
         if (temp < -273.15){
             printf("Temperature is outside of scale");
             return 0;
         }
+        // convert celsius to fahrenheit
         if (conv == 2){
             new_temp = celsius_to_fahrenheit(temp);
             printf("Converted Temperature: %.2f degrees F\n", new_temp);
             celsius = temp;
+        // convert celsius to kelvin
         }else if (conv == 3){
             new_temp = celsius_to_kelvin(temp);
             printf("Converted Temperature: %.2f degrees K\n", new_temp);
             celsius = temp;
         }
+    //checks if the temperature is fahrenheit
     }else if (scale == 2){
+        //error handling to make sure temperature is valid
         if (temp < -459.67){
             printf("Temperature is outside of scale");
             return 0;
         }
+        // convert fahrenheit to celsius
         if (conv == 1){
             new_temp = fahrenheit_to_celsius(temp);
             printf("Converted Temperature: %.2f degrees C\n", new_temp);
             celsius = new_temp;
+        // convert fahrenheit to kelvin
         }else if (conv == 3){
             new_temp = fahrenheit_to_celsius(temp);
             new_temp = celsius_to_kelvin(new_temp);
             printf("Converted Temperature: %.2f degrees K\n", new_temp);
             celsius = new_temp;
         }
+    //checks if the temperature is kelvin
     }else if (scale == 3){
+        //error handling to make sure temperature is valid
         if (temp < 0){
             printf("Temperature is outside of scale");
             return 0;
         }
+        // convert kelvin to celsius
         if (conv == 1){
             new_temp = kelvin_to_celsius(temp);
             printf("Converted Temperature: %.2f degrees C\n", new_temp);
             celsius = new_temp;
+        // convert kelvin to fahrenheit
         }else if (conv == 2){
             new_temp = kelvin_to_celsius(temp);
             new_temp = celsius_to_fahrenheit(new_temp);
@@ -63,6 +74,7 @@ int main(int argc, char *argv[]) {
             celsius = new_temp;
         }
     }
+    //checks if the current scale and conversion scale are the same
     if (scale == conv){
         printf("Cannot convert to current measurement\n");
         return 0;
